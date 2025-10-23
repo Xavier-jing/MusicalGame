@@ -14,7 +14,7 @@ public enum NoteState
 public enum ActionType
 {
     None,
-    Jump,
+    Jump,//Ìø¹ý£¿
     Collected,
     Attack1,
     Attack2,

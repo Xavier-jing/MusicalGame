@@ -5,17 +5,21 @@ using UnityEngine;
 /// </summary>
 public class Dispatcher : MonoBehaviour
 {
+    public RhythmUiInput inputHandler;
     public NoteProcessor processor;      
-    public float earlyWindow = 0.16f;  //玩家可以提前按键的时间范围
-    public float lateWindow = 0.16f; //玩家可以晚按键的时间范围
-    public float comboWindow = 0.12f; // 判定combo的时间误差
+    public float earlyWindow = 0.5f;  //玩家可以提前按键的时间范围
+    public float lateWindow = 5f; //玩家可以晚按键的时间范围
+    public float comboWindow = 5f; // 判定combo的时间误差
     public bool isCombo = false;
     [HideInInspector]
     public int comboCount = 0;
 
     void Start()
     {
-        var inputHandler = Object.FindAnyObjectByType<RhythmUiInput>();
+        if (!inputHandler) {
+            inputHandler = Object.FindAnyObjectByType<RhythmUiInput>();
+        }
+        
         inputHandler.onPressEvent.AddListener(OnPress);
     }
 
@@ -24,10 +28,13 @@ public class Dispatcher : MonoBehaviour
         float currentTime = processor.audioSource.time;
 
         // 1. 筛选当前可判定音符
-        var candidates = processor.activeNotes.Where(m => m.noteType == laneIndex && !m.hasBeenJudged 
-        && currentTime >= m.hitTime - earlyWindow 
-        && currentTime <= m.hitTime + lateWindow).ToList();
+        // var candidates = processor.activeNotes.Where(m => m.noteType == laneIndex && !m.hasBeenJudged 
+        //                                                                           && currentTime >= m.hitTime - earlyWindow 
+        //                                                                           && currentTime <= m.hitTime + lateWindow).ToList();
 
+        var candidates = processor.activeNotes.Where(m => m.noteType == laneIndex).ToList();
+
+    
         if (candidates.Count == 0)
         {
             Debug.Log($"Lane {laneIndex} press: no candidate -> MissClick");
@@ -46,9 +53,13 @@ public class Dispatcher : MonoBehaviour
             best.hasBeenJudged = true;
             processor.activeNotes.Remove(best);
             comboCount++;
-            Debug.Log($"Lane {laneIndex} COMBO! Note {best.id}");
+
+            NoteController noteController = NoteManager.Instance.GetControllerByNoteId(best.id);
+            noteController.BeHit();//触发被打击函数
+            
+            Debug.LogWarning($"Lane {laneIndex} COMBO! Note {best.id}");
         }
-        else
+        else//没打中
         {
             best.state = NoteState.Missed;
             best.hasBeenJudged = true;

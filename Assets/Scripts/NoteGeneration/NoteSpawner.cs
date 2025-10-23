@@ -14,6 +14,7 @@ public class NoteSpawner : MonoBehaviour
     public float targetOffsetY = 0f;
 
     public List<MusicNote> allNotes;
+    
     private HashSet<int> spawnedNotes = new HashSet<int>();
 
     public float moveSpeed = 5f;
@@ -43,8 +44,11 @@ public class NoteSpawner : MonoBehaviour
 
         GameObject realNote = Instantiate(prefab, note.spawnPos, Quaternion.identity);
 
-        NoteMover mover = realNote.GetComponent<NoteMover>(); 
-
+        NoteMover mover = realNote.GetComponent<NoteMover>();
+        
+        NoteController noteController = realNote.AddComponent<NoteController>();
+        NoteManager.Instance.NoteControllers.Add(noteController);
+        noteController.Initialize(note.id);
         mover.Initialize(note.targetPos, moveSpeed);
     }
 

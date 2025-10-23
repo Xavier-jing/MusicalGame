@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScenes.unity
+    path: Assets/Scenes/BeginScenes.unity
     guid: a3f290dc69198244a81b4d480cad78af
   - enabled: 1
     path: Assets/Scenes/SetScenes.unity
@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter3Scenese.unity
     guid: de53d8c7f8e2e434b89c0150d442aa78
   - enabled: 1
-    path: Assets/Scenes/MusicalPSences.unity
+    path: Assets/Scenes/MusicalPScenes.unity
     guid: 43d07548e86df4046975ecb41d16f77d
   - enabled: 1
-    path: Assets/Scenes/PauseMenu.unity
+    path: Assets/Scenes/PauseMenuScenes.unity
     guid: faf1ac12ec09e914c8561cf45a7d3bc0
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity

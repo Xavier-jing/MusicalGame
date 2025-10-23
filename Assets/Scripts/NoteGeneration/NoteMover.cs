@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NoteMover : MonoBehaviour
 {
+    private NoteController noteController;
     private Vector2 targetPos;
     private float moveSpeed;
     private bool isMoving = false;
@@ -11,6 +12,7 @@ public class NoteMover : MonoBehaviour
         targetPos = target;
         moveSpeed = speed;
         isMoving = true;
+        noteController = gameObject.GetComponent<NoteController>();
     }
 
     private void Update()
@@ -22,8 +24,10 @@ public class NoteMover : MonoBehaviour
         if (Vector2.Distance(transform.position, targetPos) < 0.05f)
         {
             isMoving = false;
-            Destroy(gameObject);
+            noteController.Die();
         }
-        Debug.Log($"{gameObject.name} moving to {targetPos}, current {transform.position}");
+        //Debug.Log($"{gameObject.name} moving to {targetPos}, current {transform.position}");
     }
+
+    
 }

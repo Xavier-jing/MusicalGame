@@ -9,7 +9,6 @@ public class NoteProcessor : MonoBehaviour
     public TextAsset chartFile;
     public float bpm = 100f;
     public List<MusicNote> allNotes = new List<MusicNote>();
-    [HideInInspector] 
     public List<MusicNote> activeNotes = new List<MusicNote>();
 
     private void Awake()
@@ -29,7 +28,7 @@ public class NoteProcessor : MonoBehaviour
             {
                 note.state = NoteState.Active;
                 activeNotes.Add(note);
-                Debug.Log($"Note {note.id} activated at {currentTime}s");
+                //Debug.Log($"Note {note.id} activated at {currentTime}s");
             }
         }
 
@@ -41,7 +40,7 @@ public class NoteProcessor : MonoBehaviour
             {
                 note.state = NoteState.Missed;
                 note.hasBeenJudged = true;
-                Debug.Log($"Note {note.id} MISSED at {currentTime}s");
+                //Debug.Log($"Note {note.id} MISSED at {currentTime}s");
                 activeNotes.RemoveAt(i);
             }
         }
