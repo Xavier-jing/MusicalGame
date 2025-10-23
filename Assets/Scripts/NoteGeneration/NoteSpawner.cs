@@ -6,11 +6,17 @@ using UnityEngine;
 public class NoteSpawner : MonoBehaviour
 {
     public GameObject[] notePrefabs;
-    public Transform[] trackPoints;
     public NoteProcessor noteProcessor;
+
+    public Transform player;           
+    public float spawnOffsetX = 5f;    
+    public float targetOffsetX = 0f;  
+    public float targetOffsetY = 0f;
+
     public List<MusicNote> allNotes;
-    public float targetYOffset = 2f;
     private HashSet<int> spawnedNotes = new HashSet<int>();
+
+    public float moveSpeed = 5f;
 
     private void Start()
     {
@@ -36,6 +42,10 @@ public class NoteSpawner : MonoBehaviour
         GameObject prefab = GetPrefabForNote(note);
 
         GameObject realNote = Instantiate(prefab, note.spawnPos, Quaternion.identity);
+
+        NoteMover mover = realNote.GetComponent<NoteMover>(); 
+
+        mover.Initialize(note.targetPos, moveSpeed);
     }
 
     private GameObject GetPrefabForNote(MusicNote note)
@@ -46,34 +56,15 @@ public class NoteSpawner : MonoBehaviour
         else return null;
     }
 
+    //直接在玩家位置前生成
     private Vector2 CalculateSpawnPos(MusicNote note)
     {
-        if (trackPoints == null || trackPoints.Length == 0)
-            return Vector2.zero;
-
-        if (trackPoints.Length == 1)
-            return trackPoints[0].position;
-        float t = 0f;
-        t = Mathf.Clamp01(note.appearTime / 5f);
-
-        int lastIndex = trackPoints.Length - 1;
-        float totalSegments = lastIndex;
-        float scaledT = t * totalSegments;
-        int segment = Mathf.FloorToInt(scaledT);
-        segment = Mathf.Clamp(segment, 0, lastIndex - 1);
-        float localT = scaledT - segment;
-
-        Vector2 start = trackPoints[segment].position;
-        Vector2 end = trackPoints[segment + 1].position;
-
-        return Vector2.Lerp(start, end, localT);
+        return new Vector2(player.position.x + spawnOffsetX, player.position.y); 
     }
 
     private Vector2 CalculateTargetPos(MusicNote note)
     {
-        Vector2 target = note.spawnPos;
-        target.y -= targetYOffset;
-        return target;
+        return new Vector2(player.position.x + targetOffsetX, player.position.y + targetOffsetY);
     }
 }
 

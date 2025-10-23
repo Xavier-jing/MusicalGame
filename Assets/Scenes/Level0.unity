@@ -883,13 +883,13 @@ MonoBehaviour:
   - {fileID: 7369543763417685272, guid: 66cb3d73448413d4c806e8fb01a42aa8, type: 3}
   - {fileID: 8068671422767334380, guid: 3b88a55e7724d89499f3863e2226db8d, type: 3}
   - {fileID: 9071131843842942723, guid: 8479c733fe26992409c2aefe8fbb34c1, type: 3}
-  trackPoints:
-  - {fileID: 80408112}
-  - {fileID: 1399226698}
-  - {fileID: 1463055048}
   noteProcessor: {fileID: 404800457}
+  player: {fileID: 1380287231}
+  spawnOffsetX: 5
+  targetOffsetX: -1
+  targetOffsetY: 0
   allNotes: []
-  targetYOffset: 2
+  moveSpeed: 5
 --- !u!114 &404800461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3127,7 +3127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: a81025e0014b2e64483e3c780410247e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
