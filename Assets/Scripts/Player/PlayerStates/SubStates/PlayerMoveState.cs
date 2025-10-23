@@ -48,7 +48,7 @@ public class PlayerMoveState : PlayerGroundedState
         Vector2 basePos = player.transform.position;
         Vector2 direction = Vector2.right;
         float distance = playerData.autoJumpCheckDistance;
-        Vector2[] offsets = { Vector2.up * 1f, Vector2.zero, Vector2.down * 1f };
+        Vector2[] offsets = { Vector2.up * 1f, Vector2.zero, Vector2.down * 1.3f };
 
         foreach (var offset in offsets)
         {

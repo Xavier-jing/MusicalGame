@@ -7,24 +7,17 @@ public class NoteProcessor : MonoBehaviour
 {
     public AudioSource audioSource;
     public TextAsset chartFile;
+    public float bpm = 100f;
     public List<MusicNote> allNotes = new List<MusicNote>();
     [HideInInspector] 
     public List<MusicNote> activeNotes = new List<MusicNote>();
 
-    private void Start()
+    private void Awake()
     {
-        LoadChartData();
+        allNotes = NoteLoader.LoadCSV(chartFile, bpm);
     }
 
-    private void LoadChartData()
-    {
-        string json = chartFile.text;
-        ChartData chart = JsonUtility.FromJson<ChartData>(json);
-        allNotes = chart.notes;
-        Debug.Log($"Loaded chart with {allNotes.Count} notes.");
-    }
-
-    private void Update()
+    public void ProcessNote()
     {
         float currentTime = audioSource.time;
 
@@ -32,9 +25,9 @@ public class NoteProcessor : MonoBehaviour
         for (int i = 0; i < allNotes.Count; i++)
         {
             MusicNote note = allNotes[i];
-            if (note.state == MushroomState.Idle && currentTime >= note.appearTime)
+            if (note.state == NoteState.Idle && currentTime >= note.appearTime)
             {
-                note.state = MushroomState.Active;
+                note.state = NoteState.Active;
                 activeNotes.Add(note);
                 Debug.Log($"Note {note.id} activated at {currentTime}s");
             }
@@ -46,7 +39,7 @@ public class NoteProcessor : MonoBehaviour
             MusicNote note = activeNotes[i];
             if (!note.hasBeenJudged && currentTime > note.disappearTime)
             {
-                note.state = MushroomState.Missed;
+                note.state = NoteState.Missed;
                 note.hasBeenJudged = true;
                 Debug.Log($"Note {note.id} MISSED at {currentTime}s");
                 activeNotes.RemoveAt(i);

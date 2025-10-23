@@ -30,7 +30,7 @@ public class PlayerGroundedState : PlayerState
         isAttack1 = false;
         isAttack2 = false;
         isAttack3 = false;
-        isShield = false;
+        isShield = false; 
     }
 
     public override void Exit()
@@ -74,6 +74,7 @@ public class PlayerGroundedState : PlayerState
     public void IsAttack1() => isAttack1 = true;
     public void IsAttack2() => isAttack2 = true;
     public void IsAttack3() => isAttack3 = true;
-    public void IsShield() => isShield = true;
+    public void IsShield() => isShield = true; 
+    //isShile = Dispatcher.comboCount == ? 具体次数等策划
     #endregion
 }

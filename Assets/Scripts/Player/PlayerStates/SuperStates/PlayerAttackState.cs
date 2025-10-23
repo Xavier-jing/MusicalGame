@@ -35,7 +35,6 @@ public class PlayerAttackState : PlayerState
         attackTime += Time.deltaTime;
         if(!isAttack && attackTime >= 0.2f)
         {
-            DealDamage();
             isAttack = true;
         }
 
@@ -53,21 +52,10 @@ public class PlayerAttackState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public virtual void DealDamage()
-    {
-        //检测敌人，暂时用圆形检测，后续看策划案判断
-        Collider2D[] hits = Physics2D.OverlapCircleAll(player.transform.position,playerData.attackRadius,
-        playerData.whatIsEnemy);
-
-        foreach (var hit in hits)
-        {
-            if (hit.TryGetComponent<IDamageable>(out var damageable))
-            {
-                damageable.AttackEnemy();
-            }
-        }
-
-    }
+    //public virtual void DealDamage()
+    //{
+    //    //没必要做敌人检测，播放完特效直接扣敌人血量就行
+    //}
 }
 
 

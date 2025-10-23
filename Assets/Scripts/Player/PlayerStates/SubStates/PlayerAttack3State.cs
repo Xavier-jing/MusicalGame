@@ -8,13 +8,6 @@ public class PlayerAttack3State : PlayerAttackState
     {
     }
 
-    public override void DealDamage()
-    {
-        base.DealDamage();
-        /*具体攻击范围写这里
-        */
-    }
-
     public override void DoChecks()
     {
         base.DoChecks();

@@ -1,14 +1,17 @@
 using System.Linq;
 using UnityEngine;
 /// <summary>
-/// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ß¼ï¿½ 10.18
+/// Òô·ûÅÐ¶¨Âß¼­ 10.18
 /// </summary>
 public class Dispatcher : MonoBehaviour
 {
     public NoteProcessor processor;      
-    public float earlyWindow = 0.16f;  //ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä·¶Î§
-    public float lateWindow = 0.16f; //ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä·¶Î§
-    public float comboWindow = 0.12f; // ï¿½Ð¶ï¿½comboï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float earlyWindow = 0.16f;  //Íæ¼Ò¿ÉÒÔÌáÇ°°´¼üµÄÊ±¼ä·¶Î§
+    public float lateWindow = 0.16f; //Íæ¼Ò¿ÉÒÔÍí°´¼üµÄÊ±¼ä·¶Î§
+    public float comboWindow = 0.12f; // ÅÐ¶¨comboµÄÊ±¼äÎó²î
+    public bool isCombo = false;
+    [HideInInspector]
+    public int comboCount = 0;
 
     void Start()
     {
@@ -20,8 +23,8 @@ public class Dispatcher : MonoBehaviour
     {
         float currentTime = processor.audioSource.time;
 
-        // 1. É¸Ñ¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
-        var candidates = processor.activeNotes.Where(m => m.lane == laneIndex && !m.hasBeenJudged 
+        // 1. É¸Ñ¡µ±Ç°¿ÉÅÐ¶¨Òô·û
+        var candidates = processor.activeNotes.Where(m => m.noteType == laneIndex && !m.hasBeenJudged 
         && currentTime >= m.hitTime - earlyWindow 
         && currentTime <= m.hitTime + lateWindow).ToList();
 
@@ -31,21 +34,23 @@ public class Dispatcher : MonoBehaviour
             return;
         }
 
-        // 2. Ê±ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½Ñ¡ï¿½ï¿½ hitTime ï¿½ï¿½ currentTime ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        var best = candidates.OrderBy(m => Mathf.Abs(m.hitTime - currentTime)).First();
+        // 2. Ê±¼äÓÅÏÈ£¬Ñ¡Ôñ hitTime Óë currentTime ²î×îÐ¡µÄÒô·û
+        MusicNote best = candidates.OrderBy(m => Mathf.Abs(m.hitTime - currentTime)).First();
         float dt = Mathf.Abs(best.hitTime - currentTime);
 
-        // 3. ï¿½Ð¶ï¿½ combo/missï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+        // 3. ÅÐ¶¨combo/miss£¬´¦ÀíÍæ¼Ò²Ù×÷ÁËµÄÇé¿ö
         if (dt <= comboWindow)
         {
-            best.state = MushroomState.Judged;
+            isCombo = true;
+            best.state = NoteState.Judged;
             best.hasBeenJudged = true;
             processor.activeNotes.Remove(best);
+            comboCount++;
             Debug.Log($"Lane {laneIndex} COMBO! Note {best.id}");
         }
         else
         {
-            best.state = MushroomState.Missed;
+            best.state = NoteState.Missed;
             best.hasBeenJudged = true;
             processor.activeNotes.Remove(best);
             Debug.Log($"Lane {laneIndex} LATE -> MISS Note {best.id}");
