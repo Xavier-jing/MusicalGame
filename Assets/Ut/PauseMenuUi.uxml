@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-text-align: upper-left; align-items: center; justify-content: space-evenly; align-self: center; align-content: stretch;">
+        <ui:Button text="继续" name="Btn_Continue" style="width: 500px; height: 120px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; font-size: 60px;" />
+        <ui:Button text="重新开始" name="Btn_Restart" style="width: 500px; height: 120px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; font-size: 60px;" />
+        <ui:Button text="设置" name="Btn_Set" style="width: 500px; height: 120px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; font-size: 60px;" />
+        <ui:Button text="回到主页面" name="Btn_RtMain" style="width: 500px; height: 120px; font-size: 60px;" />
+    </ui:VisualElement>
+</ui:UXML>

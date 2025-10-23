@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 1920px; height: 108px;">
+        <ui:Button text="Return&#10;" name="Btn_Back" style="flex-direction: column-reverse; width: 70px; height: 70px; justify-content: flex-start; align-items: auto; align-self: flex-start; align-content: flex-start; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; bottom: auto; top: 50px; left: 30px; font-size: 14px; border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-right-radius: 35px; border-bottom-left-radius: 35px;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-self: center;">
+        <ui:Toggle label="打击震动" name="Toggle_Vibration" style="width: 1160px; height: 108px; font-size: 34px; -unity-text-align: middle-center; justify-content: space-around; align-self: center; align-content: stretch; align-items: center; top: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; width: 1921px; height: 10px; -unity-text-align: upper-center; justify-content: center; flex-direction: row; align-self: stretch; align-items: stretch; align-content: center;">
+        <ui:Toggle label="打击音效" name="Toggle_HitSound" style="width: 260px; height: 108px; font-size: 34px; -unity-text-align: middle-center; align-items: center; justify-content: space-around; align-self: center; top: auto;" />
+        <ui:Slider value="42" high-value="100" name="Slider_HitVolume" style="width: 900px; height: auto;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; height: 324px; align-items: center; justify-content: space-evenly; align-self: auto; align-content: stretch;">
+        <ui:Slider label="音乐" value="42" high-value="100" name="Slider_Music" style="top: 0; width: 1160px; height: 108px; align-self: center; font-size: 34px; -unity-text-align: middle-center;" />
+        <ui:Slider label="延迟" value="42" high-value="100" name="Slider_Delay" style="top: auto; width: 1160px; height: 108px; align-self: center; font-size: 34px; -unity-text-align: middle-center;" />
+    </ui:VisualElement>
+</ui:UXML>
