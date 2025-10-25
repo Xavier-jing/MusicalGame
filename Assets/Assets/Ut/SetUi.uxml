@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 1920px; height: 108px;">
+        <ui:Button name="Btn_Back" style="flex-direction: column-reverse; width: 150px; height: 90px; justify-content: flex-start; align-items: auto; align-self: flex-start; align-content: flex-start; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; bottom: auto; top: 50px; left: 30px; font-size: 14px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; min-width: 150px; min-height: 90px; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/Sprites/UI/%E8%BF%94%E5%9B%9E%E9%94%AE.png?fileID=2800000&amp;guid=8882a1ae10d37c642930186fb82c2264&amp;type=3#返回键&quot;);" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-self: center;">
+        <ui:Toggle label="&#10;" name="Toggle_Vibration" style="width: 1160px; height: 108px; font-size: 34px; -unity-text-align: middle-center; justify-content: space-around; align-self: center; align-content: stretch; align-items: center; top: 0; background-image: none; background-position-y: top 0; background-size: 30% 100%; background-position-x: left 0; -unity-background-scale-mode: scale-to-fit; -unity-slice-scale: 0; -unity-slice-right: 0; -unity-slice-type: tiled; visibility: visible;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; width: 1921px; height: 10px; -unity-text-align: upper-center; justify-content: center; flex-direction: row; align-self: stretch; align-items: stretch; align-content: center;">
+        <ui:Toggle name="Toggle_HitSound" style="width: 260px; height: 108px; font-size: 34px; -unity-text-align: middle-center; align-items: center; justify-content: space-around; align-self: center; top: auto; left: 152px;" />
+        <ui:Slider value="42" high-value="100" name="Slider_HitVolume" style="width: 900px; height: auto; left: auto;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; height: 324px; align-items: center; justify-content: space-evenly; align-self: auto; align-content: stretch;">
+        <ui:Slider value="42" high-value="100" name="Slider_Music" style="top: 0; width: 900px; height: 108px; align-self: center; font-size: 34px; -unity-text-align: middle-center; left: 130px;" />
+        <ui:Slider value="42" high-value="100" name="Slider_Delay" style="top: auto; width: 900px; height: 108px; align-self: center; font-size: 34px; -unity-text-align: middle-center; left: 130px;" />
+    </ui:VisualElement>
+</ui:UXML>
