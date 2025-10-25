@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/NoteGeneration/NoteMover.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Assets/Scripts/NoteGeneration/NoteMover.cs" />
+              <option name="originalContent" value="using UnityEngine;&#10;&#10;public class NoteMover : MonoBehaviour&#10;{&#10;    private NoteController noteController;&#10;    private Vector2 targetPos;&#10;    private float moveSpeed;&#10;    private bool isMoving = false;&#10;&#10;    public void Initialize(Vector2 target, float speed)&#10;    {&#10;        targetPos = target;&#10;        moveSpeed = speed;&#10;        isMoving = true;&#10;        noteController = gameObject.GetComponent&lt;NoteController&gt;();&#10;    }&#10;&#10;    private void Update()&#10;    {&#10;        if (!isMoving) return;&#10;&#10;        transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);&#10;&#10;        if (Vector2.Distance(transform.position, targetPos) &lt; 0.05f)&#10;        {&#10;            isMoving = false;&#10;            noteController.Die();&#10;        }&#10;        //Debug.Log($&quot;{gameObject.name} moving to {targetPos}, current {transform.position}&quot;);&#10;    }&#10;&#10;    &#10;}&#10;" />
+              <option name="updatedContent" value="using UnityEngine;&#10;&#10;public class NoteMover : MonoBehaviour&#10;{&#10;    private NoteController noteController;&#10;    private Vector2 targetPos;&#10;    private float moveSpeed;&#10;    private bool isMoving = false;&#10;&#10;    public void Initialize(Vector2 target, float speed)&#10;    {&#10;        targetPos = target;&#10;        moveSpeed = speed;&#10;        isMoving = true;&#10;        noteController = gameObject.GetComponent&lt;NoteController&gt;();&#10;    }&#10;&#10;    private void Update()&#10;    {&#10;        if (!isMoving) return;&#10;&#10;        transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);&#10;&#10;        if (Vector2.Distance(transform.position, targetPos) &lt; 0.05f)&#10;        {&#10;            isMoving = false;&#10;            noteController.Die();&#10;        }&#10;        //Debug.Log($&quot;{gameObject.name} moving to {targetPos}, current {transform.position}&quot;);&#10;    }&#10;&#10;    public Vector2 GetTargetPosition()&#10;    {&#10;        return targetPos;&#10;    }&#10;&#10;    public float GetMoveSpeed()&#10;    {&#10;        return moveSpeed;&#10;    }&#10;&#10;    public bool GetIsMoving()&#10;    {&#10;        return isMoving;&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

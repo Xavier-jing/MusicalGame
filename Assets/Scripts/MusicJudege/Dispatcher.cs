@@ -57,6 +57,9 @@ public class Dispatcher : MonoBehaviour
             NoteController noteController = NoteManager.Instance.GetControllerByNoteId(best.id);
             noteController.BeHit();//触发被打击函数
             
+            // 广播音符被击打事件
+            NoteManager.Instance.BroadcastNoteHit(best.id);
+            
             Debug.LogWarning($"Lane {laneIndex} COMBO! Note {best.id}");
         }
         else//没打中

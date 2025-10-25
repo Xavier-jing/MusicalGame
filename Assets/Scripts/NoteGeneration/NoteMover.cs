@@ -29,5 +29,18 @@ public class NoteMover : MonoBehaviour
         //Debug.Log($"{gameObject.name} moving to {targetPos}, current {transform.position}");
     }
 
-    
+    public Vector2 GetTargetPosition()
+    {
+        return targetPos;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public bool GetIsMoving()
+    {
+        return isMoving;
+    }
 }

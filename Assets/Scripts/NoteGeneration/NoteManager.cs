@@ -3,12 +3,19 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
+
 /// <summary>
 /// 
 /// </summary>
 public class NoteManager : MonoBehaviour
 {
     public static NoteManager Instance;
+    
+    [System.Serializable]
+    public class NoteHitEvent : UnityEvent<int> { }
+    
+    public NoteHitEvent OnNoteHit = new NoteHitEvent();
     
     public NoteProcessor noteProcessor;
     public NoteSpawner noteSpawner;
@@ -44,5 +51,8 @@ public class NoteManager : MonoBehaviour
 
     }
     
+    public void BroadcastNoteHit(int noteId)
+    {
+        OnNoteHit.Invoke(noteId);
+    }
 }
-

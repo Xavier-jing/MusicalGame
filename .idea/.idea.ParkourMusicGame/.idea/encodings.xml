@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/HealthBar/IDamageable.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/ItemEffects/MushroomEffect.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/MusicJudege/CharData.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/MusicJudege/Dispatcher.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/MusicJudege/MusicNote.cs" charset="GBK" />
@@ -10,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/Assets/Scripts/NoteGeneration/NoteSpawner.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/NoteGeneration/RhythmConversion.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/Input/RhythmUiInput.cs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerFSM/Player.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerFSM/PlayerState.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerStates/SubStates/PlayerAttack2State.cs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerStates/SubStates/PlayerAttack3State.cs" charset="GBK" />
